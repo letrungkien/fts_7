@@ -1,0 +1,12 @@
+<% provide(:title, "All Subject") %>
+<h1>All Subject</h1>
+<%= link_to "Creat new subject!", new_admin_subject_path, class: "btn btn-large btn-primary" %>
+<ul class="subjects">
+  <% @subjects.each do |subject| %>
+  	<tr>   
+      <td><li><%= subject.name %></li></td>
+      <td><%= link_to "Edit", edit_admin_subject_path(subject) %></td>
+      <td><%= link_to "Delete", [:admin, subject], method: :delete, data: {confirm: "Are you sure?"} %></td>
+    </tr>
+  <% end %>
+</ul>

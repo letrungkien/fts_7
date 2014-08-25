@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :sessions, only: [:new, :create, :destroy]
-    match "/signin",   to: "sessions#new",                via: "get"
-    match "/signout",  to: "sessions#destroy",            via: "delete"
+    resources :subjects
+    resources :levels
+    match "/signin",   to: "admin/sessions#new",                via: "get"
+    match "/signout",  to: "admin/sessions#destroy",            via: "delete"
   end
   resources :users
   resources :exams
