@@ -1,0 +1,10 @@
+<% provide(:title, "exam") %>
+<h1><%= @exam.exam_question.name %></h1>
+<% count = 1 %>
+<%= form_for @exam do |f| %>
+  <% @exam_answers.each do |exam_answer| %>
+    <%= exam_answer.question.content%>
+    <br>
+  <% end %>
+  <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+<% end %>
