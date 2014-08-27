@@ -11,24 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140825034329) do
-
-  create_table "answer_sheet_details", force: true do |t|
-    t.integer  "answer_sheet_id"
-    t.integer  "answer_id"
-    t.string   "answer_text"
-    t.integer  "question_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "answer_sheets", force: true do |t|
-    t.integer  "exam_id"
-    t.integer  "question_id"
-    t.boolean  "admin_check"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20140827090837) do
 
   create_table "answers", force: true do |t|
     t.integer  "question_id"
@@ -38,11 +21,27 @@ ActiveRecord::Schema.define(version: 20140825034329) do
     t.datetime "updated_at"
   end
 
+  create_table "exam_answer_details", force: true do |t|
+    t.integer  "exam_answer_id"
+    t.integer  "answer_id"
+    t.string   "answer_text"
+    t.integer  "question_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "exam_answers", force: true do |t|
+    t.integer  "exam_id"
+    t.integer  "question_id"
+    t.boolean  "admin_check"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "exam_question_details", force: true do |t|
     t.integer  "exam_question_id"
-    t.integer  "checkbox_question_quantity"
-    t.integer  "textbox_question_quantity"
-    t.integer  "radio_button_question_quantity"
+    t.integer  "quantity"
+    t.string   "answer_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,7 +59,7 @@ ActiveRecord::Schema.define(version: 20140825034329) do
   create_table "exams", force: true do |t|
     t.integer  "user_id"
     t.integer  "exam_question_id"
-    t.boolean  "admin_check"
+    t.boolean  "admin_check",      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,7 +74,7 @@ ActiveRecord::Schema.define(version: 20140825034329) do
     t.integer  "subject_id"
     t.integer  "level_id"
     t.string   "content"
-    t.string   "type"
+    t.string   "answer_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

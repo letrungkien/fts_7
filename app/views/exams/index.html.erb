@@ -1,0 +1,7 @@
+<% provide(:title, "chose exam") %>
+<h1>chose exam to do</h1>
+<%= form_for(:exams, url: exams_path) do |f| %>
+  <%= f.select :subject_id, options_from_collection_for_select(@subjects, "id", "name") %>
+   <%= f.select :level_id, options_from_collection_for_select(@levels, "id", "name") %>
+  <%= f.submit "start exam", class: "btn btn-large btn-" %>
+<% end %>

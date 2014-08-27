@@ -4,7 +4,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.integer :subject_id
       t.integer :level_id
       t.string :content
-      t.string :type
+      t.string :answer_type
 
       t.timestamps
     end

@@ -3,7 +3,7 @@ class CreateExams < ActiveRecord::Migration
     create_table :exams do |t|
       t.integer :user_id
       t.integer :exam_question_id
-      t.boolean :admin_check
+      t.boolean :admin_check, default: false
       
       t.timestamps
     end
