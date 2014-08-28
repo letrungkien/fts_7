@@ -152,3 +152,39 @@ aside {
   float: left;
   margin-right: 10px;
 }
+
+/* exam question */
+
+.exam-question-detail {
+  input {
+  width: 75px;
+  display: block;
+  }
+  
+  select {
+  width: 150px;
+  display: block;
+  } 
+
+  label {
+    font-weight: bold;
+  }
+
+  p {
+    display: block;
+  }
+}
+
+.exam-question-list {
+  table, th, td, tr {
+    border: 1px solid black;
+  }
+  
+  td {
+    padding: 10px;
+  }
+
+  table {
+  width: 100%;
+  }
+}

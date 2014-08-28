@@ -1,0 +1,20 @@
+<% provide(:title, "Exam Question") %>
+<h1>Exam Questions</h1>
+<div class="row">
+  <div class="span8">
+    <%= link_to "Create New Exam Question", new_admin_exam_question_path %>
+    <% unless @exam_questions.nil? %>
+      <table class="exam-question-list">
+        <tr>
+          <th>Subject</th>
+          <th>Level</th>
+          <th>Text box question quantity</th>
+          <th>Check box question quantity</th>
+          <th>Radio button question quantity</th>
+          <th></th>
+        </tr>
+        <%= render @exam_questions, exam_question: @exam_question %>
+      </table>
+    <% end %>
+  </div>
+</div>

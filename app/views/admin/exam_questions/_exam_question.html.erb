@@ -1,0 +1,19 @@
+<%= div_for(exam_question) do %>
+  <tr>
+    <td><%= Subject.find(exam_question.subject_id).name %></td>
+    <td><%= Level.find(exam_question.level_id).name %></td>
+    <td>
+      <%= ExamQuestionDetail.find_by(exam_question_id: exam_question.id, 
+        answer_type: ExamQuestionDetail::TEXT_BOX_QUESTION_TYPE).quantity %>
+    </td>
+    <td>
+      <%= ExamQuestionDetail.find_by(exam_question_id: exam_question.id, 
+        answer_type: ExamQuestionDetail::CHECK_BOX_QUESTION_TYPE).quantity %>
+    </td>
+    <td>
+      <%= ExamQuestionDetail.find_by(exam_question_id: exam_question.id, 
+        answer_type: ExamQuestionDetail::RADIO_BUTTON_QUESTION_TYPE).quantity %>
+    </td>
+    <td><%= link_to 'edit',  edit_admin_exam_question_path(exam_question) %></td>
+  </tr>
+<% end %>

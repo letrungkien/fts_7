@@ -1,0 +1,30 @@
+<% provide(:title, "Exam Question") %>
+<h1>Exam Question</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@exam_question, url: admin_exam_question_path) do |f| %>
+      <div class="exam-question-detail">
+        <% unless @exam_question.nil? %>
+          <%= f.label :subject %>
+          <p><%= @subjects.find(@exam_question.subject_id).name %></p>
+          <%= f.label :level %>
+          <p><%= @levels.find(@exam_question.level_id).name %></p>
+          <%= f.hidden_field :subject_id %>
+          <%= f.hidden_field :level_id %>
+        <% end %>
+        <%= f.fields_for :exam_question_details do |builder| %>
+          <% if builder.object.answer_type == ExamQuestionDetail::TEXT_BOX_QUESTION_TYPE %>
+            <%= "Text Box Question Quantity" %>
+          <% elsif builder.object.answer_type == ExamQuestionDetail::CHECK_BOX_QUESTION_TYPE %>
+            <%= "Check Box Question Quantity" %>
+          <% elsif builder.object.answer_type == ExamQuestionDetail::RADIO_BUTTON_QUESTION_TYPE %>
+            <%= "Radio Button Question Quantity" %>
+          <% end %>
+          <%= builder.text_field :quantity %>
+          <%= builder.hidden_field :answer_type, value: builder.object.answer_type %>
+        <% end %>
+      </div>
+      <%= f.submit "Set", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
