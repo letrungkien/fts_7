@@ -1,0 +1,12 @@
+<% provide(:title, "All Level") %>
+<h1>All Level</h1>
+<%= link_to "Creat new level!", new_admin_level_path, class: "btn btn-large btn-primary" %>
+<ul class="levels">
+  <% @levels.each do |level| %>
+    <li>
+      <%= level.name %>
+    </li>
+    <td><%= link_to "Edit", edit_admin_level_path(level) %></td>
+    <td><%= link_to "Delete", [:admin, level], method: :delete, data: {confirm: "Are you sure?"} %></td>
+  <% end %>
+</ul>
