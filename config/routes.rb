@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :subjects
     resources :levels
     resources :exam_questions, only: [:index, :create, :update, :edit, :new]
+    resources :questions, only: [:index, :create, :update, :edit, :new]
     match "/signin",   to: "admin/sessions#new",                via: "get"
     match "/signout",  to: "admin/sessions#destroy",            via: "delete"
   end

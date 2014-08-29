@@ -1,0 +1,8 @@
+<% counter = 1 %>
+<%= f.fields_for :answers do |builder| %>
+  <%= builder.label :answer, "Answer #{counter} " %>
+  <%= builder.text_field :content %>
+  <%= builder.label :right_answer %>
+  <%= builder.check_box :right_answer, {}, "true" %>
+  <% counter += 1 %>
+<% end %>

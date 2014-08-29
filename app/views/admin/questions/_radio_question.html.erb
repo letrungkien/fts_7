@@ -1,0 +1,10 @@
+<% counter = 1 %>
+<%= f.fields_for :answers do |builder| %>
+  <%= builder.label :answer, "Answer #{counter} " %>
+  <%= builder.text_field :content %>
+  <%= builder.label :right_answer %>
+  <%= builder.hidden_field :right_answer, value: "false" %>
+  <%= builder.radio_button :right_answer, "true", class: "radio_question" %>
+  <% counter += 1 %>
+<% end %>
+

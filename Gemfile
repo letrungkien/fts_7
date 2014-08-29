@@ -6,6 +6,7 @@ gem "bootstrap-sass", "2.3.2.0"
 gem "sprockets", "2.11.0"
 gem "bcrypt-ruby", "3.1.2"
 gem "pry"
+gem "will_paginate", "3.0.4"
 # Use sqlite3 as the database for Active Record
 group :development, :test do
   gem "rspec-rails", "2.13.1"

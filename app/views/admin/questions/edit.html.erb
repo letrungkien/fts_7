@@ -1,0 +1,27 @@
+<% provide(:title, "Question") %>
+<h1>Edit Question</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@question, url: admin_question_path) do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <div class="question-detail">  
+        <%= f.label :subject %>
+        <%= @question.subject.name %>
+        <%= f.label :level %>
+        <%= @question.level.name %>
+        <%= f.label :answer_type %>
+        <%= @types.select{|key, value| value == @question.answer_type}[0][0] %>
+        <%= f.hidden_field :answer_type %>
+        <%= f.label :content %>
+        <%= f.text_field :content %>
+        <div class="answer-detail">
+          <%= render("checkbox_question", f: f) if 
+            @question.answer_type == Question::CHECK_BOX_QUESTION_TYPE %>
+          <%= render("radio_question", f: f) if 
+            @question.answer_type == Question::RADIO_BUTTON_QUESTION_TYPE %>
+        </div>
+      </div>
+      <%= f.submit "Update", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

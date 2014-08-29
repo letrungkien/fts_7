@@ -1,0 +1,8 @@
+<%= div_for question do %>
+  <tr>
+    <td><%= question.id %></td>
+    <td><%= @types.select{|key, value| value == question.answer_type}[0][0] %></td>
+    <td><%= question.content %></td>
+    <td><%= link_to "edit", edit_admin_question_path(question) %></td>
+  </tr>
+<% end %>
